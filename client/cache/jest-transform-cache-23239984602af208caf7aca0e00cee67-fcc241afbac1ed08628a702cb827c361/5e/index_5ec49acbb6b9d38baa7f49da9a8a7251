@@ -1,0 +1,38 @@
+e3a263e214bb07f51cc5a5fa74246fbd
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.setupStore = exports["default"] = void 0;
+var _state = _interopRequireDefault(require("../state"));
+var _toolkit = require("@reduxjs/toolkit");
+var _reduxPersist = require("redux-persist");
+var _storage = _interopRequireDefault(require("redux-persist/lib/storage"));
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+var persistConfig = {
+  key: "root",
+  storage: _storage["default"],
+  version: 1
+};
+var persistedReducer = (0, _reduxPersist.persistReducer)(persistConfig, _state["default"]);
+var store = (0, _toolkit.configureStore)({
+  reducer: persistedReducer,
+  middleware: function middleware(getDefaultMiddleware) {
+    return getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: [_reduxPersist.FLUSH, _reduxPersist.REHYDRATE, _reduxPersist.PAUSE, _reduxPersist.PERSIST, _reduxPersist.PURGE, _reduxPersist.REGISTER]
+      }
+    });
+  }
+});
+var _default = store;
+exports["default"] = _default;
+var setupStore = function setupStore(preloadedState) {
+  return (0, _toolkit.configureStore)({
+    reducer: _state["default"],
+    preloadedState: preloadedState
+  });
+};
+exports.setupStore = setupStore;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJwZXJzaXN0Q29uZmlnIiwia2V5Iiwic3RvcmFnZSIsInZlcnNpb24iLCJwZXJzaXN0ZWRSZWR1Y2VyIiwicGVyc2lzdFJlZHVjZXIiLCJhdXRoUmVkdWNlciIsInN0b3JlIiwiY29uZmlndXJlU3RvcmUiLCJyZWR1Y2VyIiwibWlkZGxld2FyZSIsImdldERlZmF1bHRNaWRkbGV3YXJlIiwic2VyaWFsaXphYmxlQ2hlY2siLCJpZ25vcmVkQWN0aW9ucyIsIkZMVVNIIiwiUkVIWURSQVRFIiwiUEFVU0UiLCJQRVJTSVNUIiwiUFVSR0UiLCJSRUdJU1RFUiIsInNldHVwU3RvcmUiLCJwcmVsb2FkZWRTdGF0ZSJdLCJzb3VyY2VzIjpbImluZGV4LmpzIl0sInNvdXJjZXNDb250ZW50IjpbImltcG9ydCBhdXRoUmVkdWNlciBmcm9tIFwiLi4vc3RhdGVcIjtcclxuaW1wb3J0IHsgY29uZmlndXJlU3RvcmUgfSBmcm9tIFwiQHJlZHV4anMvdG9vbGtpdFwiO1xyXG5cclxuaW1wb3J0IHtcclxuICBwZXJzaXN0UmVkdWNlcixcclxuICBGTFVTSCxcclxuICBSRUhZRFJBVEUsXHJcbiAgUEFVU0UsXHJcbiAgUEVSU0lTVCxcclxuICBQVVJHRSxcclxuICBSRUdJU1RFUixcclxufSBmcm9tIFwicmVkdXgtcGVyc2lzdFwiO1xyXG5pbXBvcnQgc3RvcmFnZSBmcm9tIFwicmVkdXgtcGVyc2lzdC9saWIvc3RvcmFnZVwiO1xyXG5cclxuY29uc3QgcGVyc2lzdENvbmZpZyA9IHsga2V5OiBcInJvb3RcIiwgc3RvcmFnZSwgdmVyc2lvbjogMSB9O1xyXG5jb25zdCBwZXJzaXN0ZWRSZWR1Y2VyID0gcGVyc2lzdFJlZHVjZXIocGVyc2lzdENvbmZpZywgYXV0aFJlZHVjZXIpO1xyXG5jb25zdCBzdG9yZSA9IGNvbmZpZ3VyZVN0b3JlKHtcclxuICByZWR1Y2VyOiBwZXJzaXN0ZWRSZWR1Y2VyLFxyXG4gIG1pZGRsZXdhcmU6IChnZXREZWZhdWx0TWlkZGxld2FyZSkgPT5cclxuICAgIGdldERlZmF1bHRNaWRkbGV3YXJlKHtcclxuICAgICAgc2VyaWFsaXphYmxlQ2hlY2s6IHtcclxuICAgICAgICBpZ25vcmVkQWN0aW9uczogW0ZMVVNILCBSRUhZRFJBVEUsIFBBVVNFLCBQRVJTSVNULCBQVVJHRSwgUkVHSVNURVJdLFxyXG4gICAgICB9LFxyXG4gICAgfSksXHJcbn0pO1xyXG5cclxuZXhwb3J0IGRlZmF1bHQgc3RvcmU7XHJcblxyXG5leHBvcnQgY29uc3Qgc2V0dXBTdG9yZSA9IChwcmVsb2FkZWRTdGF0ZSkgPT4ge1xyXG4gIHJldHVybiBjb25maWd1cmVTdG9yZSh7XHJcbiAgICByZWR1Y2VyOiBhdXRoUmVkdWNlcixcclxuICAgIHByZWxvYWRlZFN0YXRlLFxyXG4gIH0pO1xyXG59O1xyXG4iXSwibWFwcGluZ3MiOiI7Ozs7OztBQUFBO0FBQ0E7QUFFQTtBQVNBO0FBQWdEO0FBRWhELElBQU1BLGFBQWEsR0FBRztFQUFFQyxHQUFHLEVBQUUsTUFBTTtFQUFFQyxPQUFPLEVBQVBBLG1CQUFPO0VBQUVDLE9BQU8sRUFBRTtBQUFFLENBQUM7QUFDMUQsSUFBTUMsZ0JBQWdCLEdBQUcsSUFBQUMsNEJBQWMsRUFBQ0wsYUFBYSxFQUFFTSxpQkFBVyxDQUFDO0FBQ25FLElBQU1DLEtBQUssR0FBRyxJQUFBQyx1QkFBYyxFQUFDO0VBQzNCQyxPQUFPLEVBQUVMLGdCQUFnQjtFQUN6Qk0sVUFBVSxFQUFFLG9CQUFDQyxvQkFBb0I7SUFBQSxPQUMvQkEsb0JBQW9CLENBQUM7TUFDbkJDLGlCQUFpQixFQUFFO1FBQ2pCQyxjQUFjLEVBQUUsQ0FBQ0MsbUJBQUssRUFBRUMsdUJBQVMsRUFBRUMsbUJBQUssRUFBRUMscUJBQU8sRUFBRUMsbUJBQUssRUFBRUMsc0JBQVE7TUFDcEU7SUFDRixDQUFDLENBQUM7RUFBQTtBQUNOLENBQUMsQ0FBQztBQUFDLGVBRVlaLEtBQUs7QUFBQTtBQUViLElBQU1hLFVBQVUsR0FBRyxTQUFiQSxVQUFVLENBQUlDLGNBQWMsRUFBSztFQUM1QyxPQUFPLElBQUFiLHVCQUFjLEVBQUM7SUFDcEJDLE9BQU8sRUFBRUgsaUJBQVc7SUFDcEJlLGNBQWMsRUFBZEE7RUFDRixDQUFDLENBQUM7QUFDSixDQUFDO0FBQUMifQ==

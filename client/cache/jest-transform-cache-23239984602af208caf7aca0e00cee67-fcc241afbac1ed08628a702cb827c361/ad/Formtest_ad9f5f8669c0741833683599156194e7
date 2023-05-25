@@ -1,0 +1,37 @@
+29d7006adbe51bf134c12cc31765f414
+"use strict";
+
+_getJestObj().mock("react-router-dom", function () {
+  return _objectSpread(_objectSpread({}, jest.requireActual("react-router-dom")), {}, {
+    useNavigate: function useNavigate() {
+      return mockedUsedNavigate;
+    }
+  });
+});
+var _testUtils = require("../../test-utils");
+var _react = _interopRequireDefault(require("react"));
+var _react2 = require("@testing-library/react");
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _getJestObj() {
+  var _require2 = require("@jest/globals"),
+    jest = _require2.jest;
+  _getJestObj = function _getJestObj() {
+    return jest;
+  };
+  return jest;
+}
+var _require = require("./Form"),
+  Form = _require["default"];
+
+//const { getItemMock, setItemMock } = mockLocalStorage();
+var mockedUsedNavigate = jest.fn();
+test("on initial render, login button should be disabled", function () {
+  (0, _testUtils.renderWithProviders)( /*#__PURE__*/_react["default"].createElement(Form, null));
+  expect(_react2.screen.getByRole("button", {
+    name: submit
+  })).toBeDisabled();
+});
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJtb2NrIiwiamVzdCIsInJlcXVpcmVBY3R1YWwiLCJ1c2VOYXZpZ2F0ZSIsIm1vY2tlZFVzZWROYXZpZ2F0ZSIsInJlcXVpcmUiLCJGb3JtIiwiZm4iLCJ0ZXN0IiwicmVuZGVyV2l0aFByb3ZpZGVycyIsImV4cGVjdCIsInNjcmVlbiIsImdldEJ5Um9sZSIsIm5hbWUiLCJzdWJtaXQiLCJ0b0JlRGlzYWJsZWQiXSwic291cmNlcyI6WyJGb3JtLnRlc3QuanMiXSwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHsgcmVuZGVyV2l0aFByb3ZpZGVycyB9IGZyb20gXCIuLi8uLi90ZXN0LXV0aWxzXCI7XHJcbmltcG9ydCBSZWFjdCBmcm9tIFwicmVhY3RcIjtcclxuaW1wb3J0IHsgbW9ja0xvY2FsU3RvcmFnZSB9IGZyb20gXCIuLi8uLi90ZXN0LXV0aWxzXCI7XHJcbmltcG9ydCB7IHNjcmVlbiB9IGZyb20gXCJAdGVzdGluZy1saWJyYXJ5L3JlYWN0XCI7XHJcbmNvbnN0IHsgZGVmYXVsdDogRm9ybSB9ID0gcmVxdWlyZShcIi4vRm9ybVwiKTtcclxuXHJcbi8vY29uc3QgeyBnZXRJdGVtTW9jaywgc2V0SXRlbU1vY2sgfSA9IG1vY2tMb2NhbFN0b3JhZ2UoKTtcclxuY29uc3QgbW9ja2VkVXNlZE5hdmlnYXRlID0gamVzdC5mbigpO1xyXG5cclxuamVzdC5tb2NrKFwicmVhY3Qtcm91dGVyLWRvbVwiLCAoKSA9PiAoe1xyXG4gIC4uLmplc3QucmVxdWlyZUFjdHVhbChcInJlYWN0LXJvdXRlci1kb21cIiksXHJcbiAgdXNlTmF2aWdhdGU6ICgpID0+IG1vY2tlZFVzZWROYXZpZ2F0ZSxcclxufSkpO1xyXG5cclxudGVzdChcIm9uIGluaXRpYWwgcmVuZGVyLCBsb2dpbiBidXR0b24gc2hvdWxkIGJlIGRpc2FibGVkXCIsICgpID0+IHtcclxuICByZW5kZXJXaXRoUHJvdmlkZXJzKDxGb3JtIC8+KTtcclxuICBleHBlY3Qoc2NyZWVuLmdldEJ5Um9sZShcImJ1dHRvblwiLCB7IG5hbWU6IHN1Ym1pdCB9KSkudG9CZURpc2FibGVkKCk7XHJcbn0pO1xyXG4iXSwibWFwcGluZ3MiOiI7O0FBU0EsY0FBS0EsSUFBSSxDQUFDLGtCQUFrQixFQUFFO0VBQUEsdUNBQ3pCQyxJQUFJLENBQUNDLGFBQWEsQ0FBQyxrQkFBa0IsQ0FBQztJQUN6Q0MsV0FBVyxFQUFFO01BQUEsT0FBTUMsa0JBQWtCO0lBQUE7RUFBQTtBQUFBLENBQ3JDLENBQUM7QUFaSDtBQUNBO0FBRUE7QUFBZ0Q7QUFBQTtBQUFBO0FBQUE7QUFBQTtFQUFBO0lBQUE7RUFBQTtJQUFBO0VBQUE7RUFBQTtBQUFBO0FBQ2hELGVBQTBCQyxPQUFPLENBQUMsUUFBUSxDQUFDO0VBQTFCQyxJQUFJOztBQUVyQjtBQUNBLElBQU1GLGtCQUFrQixHQUFHSCxJQUFJLENBQUNNLEVBQUUsRUFBRTtBQU9wQ0MsSUFBSSxDQUFDLG9EQUFvRCxFQUFFLFlBQU07RUFDL0QsSUFBQUMsOEJBQW1CLGdCQUFDLGdDQUFDLElBQUksT0FBRyxDQUFDO0VBQzdCQyxNQUFNLENBQUNDLGNBQU0sQ0FBQ0MsU0FBUyxDQUFDLFFBQVEsRUFBRTtJQUFFQyxJQUFJLEVBQUVDO0VBQU8sQ0FBQyxDQUFDLENBQUMsQ0FBQ0MsWUFBWSxFQUFFO0FBQ3JFLENBQUMsQ0FBQyJ9

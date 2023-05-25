@@ -1,0 +1,57 @@
+51b76f31ff0d06985a718bf0b6f977fc
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.mockLocalStorage = exports.localStorageItems = void 0;
+exports.renderWithProviders = renderWithProviders;
+var _react = _interopRequireDefault(require("react"));
+var _react2 = require("@testing-library/react");
+var _store = require("./store");
+var _reactRedux = require("react-redux");
+var _state = _interopRequireDefault(require("./state"));
+var _excluded = ["preloadedState", "store"];
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+function renderWithProviders(ui) {
+  var _ref = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {},
+    _ref$preloadedState = _ref.preloadedState,
+    preloadedState = _ref$preloadedState === void 0 ? {} : _ref$preloadedState,
+    _ref$store = _ref.store,
+    store = _ref$store === void 0 ? (0, _store.setupStore)(preloadedState) : _ref$store,
+    renderOptions = _objectWithoutProperties(_ref, _excluded);
+  function Wrapper(_ref2) {
+    var children = _ref2.children;
+    return /*#__PURE__*/_react["default"].createElement(_reactRedux.Provider, {
+      store: store
+    }, children);
+  }
+  return _objectSpread({
+    store: store
+  }, (0, _react2.render)(ui, _objectSpread({
+    wrapper: Wrapper
+  }, renderOptions)));
+}
+var mockLocalStorage = {
+  getItem: jest.fn().mockImplementation(function (key) {
+    return localStorageItems[key];
+  }),
+  setItem: jest.fn().mockImplementation(function (key, value) {
+    localStorageItems[key] = value;
+  }),
+  clear: jest.fn().mockImplementation(function () {
+    exports.localStorageItems = localStorageItems = {};
+  }),
+  removeItem: jest.fn().mockImplementation(function (key) {
+    localStorageItems[key] = undefined;
+  })
+};
+exports.mockLocalStorage = mockLocalStorage;
+var localStorageItems = {};
+exports.localStorageItems = localStorageItems;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJyZW5kZXJXaXRoUHJvdmlkZXJzIiwidWkiLCJwcmVsb2FkZWRTdGF0ZSIsInN0b3JlIiwic2V0dXBTdG9yZSIsInJlbmRlck9wdGlvbnMiLCJXcmFwcGVyIiwiY2hpbGRyZW4iLCJyZW5kZXIiLCJ3cmFwcGVyIiwibW9ja0xvY2FsU3RvcmFnZSIsImdldEl0ZW0iLCJqZXN0IiwiZm4iLCJtb2NrSW1wbGVtZW50YXRpb24iLCJrZXkiLCJsb2NhbFN0b3JhZ2VJdGVtcyIsInNldEl0ZW0iLCJ2YWx1ZSIsImNsZWFyIiwicmVtb3ZlSXRlbSIsInVuZGVmaW5lZCJdLCJzb3VyY2VzIjpbInRlc3QtdXRpbHMuanMiXSwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IFJlYWN0IGZyb20gXCJyZWFjdFwiO1xyXG5pbXBvcnQgeyByZW5kZXIgfSBmcm9tIFwiQHRlc3RpbmctbGlicmFyeS9yZWFjdFwiO1xyXG5pbXBvcnQgeyBzZXR1cFN0b3JlIH0gZnJvbSBcIi4vc3RvcmVcIjtcclxuaW1wb3J0IHsgUHJvdmlkZXIgfSBmcm9tIFwicmVhY3QtcmVkdXhcIjtcclxuLy8gQXMgYSBiYXNpYyBzZXR1cCwgaW1wb3J0IHlvdXIgc2FtZSBzbGljZSByZWR1Y2Vyc1xyXG5pbXBvcnQgYXV0aFJlZHVjZXIgZnJvbSBcIi4vc3RhdGVcIjtcclxuXHJcbmV4cG9ydCBmdW5jdGlvbiByZW5kZXJXaXRoUHJvdmlkZXJzKFxyXG4gIHVpLFxyXG4gIHtcclxuICAgIHByZWxvYWRlZFN0YXRlID0ge30sXHJcbiAgICAvLyBBdXRvbWF0aWNhbGx5IGNyZWF0ZSBhIHN0b3JlIGluc3RhbmNlIGlmIG5vIHN0b3JlIHdhcyBwYXNzZWQgaW5cclxuICAgIHN0b3JlID0gc2V0dXBTdG9yZShwcmVsb2FkZWRTdGF0ZSksXHJcbiAgICAuLi5yZW5kZXJPcHRpb25zXHJcbiAgfSA9IHt9XHJcbikge1xyXG4gIGZ1bmN0aW9uIFdyYXBwZXIoeyBjaGlsZHJlbiB9KSB7XHJcbiAgICByZXR1cm4gPFByb3ZpZGVyIHN0b3JlPXtzdG9yZX0+e2NoaWxkcmVufTwvUHJvdmlkZXI+O1xyXG4gIH1cclxuICByZXR1cm4geyBzdG9yZSwgLi4ucmVuZGVyKHVpLCB7IHdyYXBwZXI6IFdyYXBwZXIsIC4uLnJlbmRlck9wdGlvbnMgfSkgfTtcclxufVxyXG5cclxuZXhwb3J0IGNvbnN0IG1vY2tMb2NhbFN0b3JhZ2UgPSB7XHJcbiAgZ2V0SXRlbTogamVzdC5mbigpLm1vY2tJbXBsZW1lbnRhdGlvbigoa2V5KSA9PiBsb2NhbFN0b3JhZ2VJdGVtc1trZXldKSxcclxuICBzZXRJdGVtOiBqZXN0LmZuKCkubW9ja0ltcGxlbWVudGF0aW9uKChrZXksIHZhbHVlKSA9PiB7XHJcbiAgICBsb2NhbFN0b3JhZ2VJdGVtc1trZXldID0gdmFsdWU7XHJcbiAgfSksXHJcbiAgY2xlYXI6IGplc3QuZm4oKS5tb2NrSW1wbGVtZW50YXRpb24oKCkgPT4ge1xyXG4gICAgbG9jYWxTdG9yYWdlSXRlbXMgPSB7fTtcclxuICB9KSxcclxuICByZW1vdmVJdGVtOiBqZXN0LmZuKCkubW9ja0ltcGxlbWVudGF0aW9uKChrZXkpID0+IHtcclxuICAgIGxvY2FsU3RvcmFnZUl0ZW1zW2tleV0gPSB1bmRlZmluZWQ7XHJcbiAgfSksXHJcbn07XHJcblxyXG5leHBvcnQgbGV0IGxvY2FsU3RvcmFnZUl0ZW1zID0ge307XHJcbiJdLCJtYXBwaW5ncyI6Ijs7Ozs7OztBQUFBO0FBQ0E7QUFDQTtBQUNBO0FBRUE7QUFBa0M7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFFM0IsU0FBU0EsbUJBQW1CLENBQ2pDQyxFQUFFLEVBT0Y7RUFBQSwrRUFESSxDQUFDLENBQUM7SUFBQSwyQkFKSkMsY0FBYztJQUFkQSxjQUFjLG9DQUFHLENBQUMsQ0FBQztJQUFBLGtCQUVuQkMsS0FBSztJQUFMQSxLQUFLLDJCQUFHLElBQUFDLGlCQUFVLEVBQUNGLGNBQWMsQ0FBQztJQUMvQkcsYUFBYTtFQUdsQixTQUFTQyxPQUFPLFFBQWU7SUFBQSxJQUFaQyxRQUFRLFNBQVJBLFFBQVE7SUFDekIsb0JBQU8sZ0NBQUMsb0JBQVE7TUFBQyxLQUFLLEVBQUVKO0lBQU0sR0FBRUksUUFBUSxDQUFZO0VBQ3REO0VBQ0E7SUFBU0osS0FBSyxFQUFMQTtFQUFLLEdBQUssSUFBQUssY0FBTSxFQUFDUCxFQUFFO0lBQUlRLE9BQU8sRUFBRUg7RUFBTyxHQUFLRCxhQUFhLEVBQUc7QUFDdkU7QUFFTyxJQUFNSyxnQkFBZ0IsR0FBRztFQUM5QkMsT0FBTyxFQUFFQyxJQUFJLENBQUNDLEVBQUUsRUFBRSxDQUFDQyxrQkFBa0IsQ0FBQyxVQUFDQyxHQUFHO0lBQUEsT0FBS0MsaUJBQWlCLENBQUNELEdBQUcsQ0FBQztFQUFBLEVBQUM7RUFDdEVFLE9BQU8sRUFBRUwsSUFBSSxDQUFDQyxFQUFFLEVBQUUsQ0FBQ0Msa0JBQWtCLENBQUMsVUFBQ0MsR0FBRyxFQUFFRyxLQUFLLEVBQUs7SUFDcERGLGlCQUFpQixDQUFDRCxHQUFHLENBQUMsR0FBR0csS0FBSztFQUNoQyxDQUFDLENBQUM7RUFDRkMsS0FBSyxFQUFFUCxJQUFJLENBQUNDLEVBQUUsRUFBRSxDQUFDQyxrQkFBa0IsQ0FBQyxZQUFNO0lBQ3hDLDRCQUFBRSxpQkFBaUIsR0FBRyxDQUFDLENBQUM7RUFDeEIsQ0FBQyxDQUFDO0VBQ0ZJLFVBQVUsRUFBRVIsSUFBSSxDQUFDQyxFQUFFLEVBQUUsQ0FBQ0Msa0JBQWtCLENBQUMsVUFBQ0MsR0FBRyxFQUFLO0lBQ2hEQyxpQkFBaUIsQ0FBQ0QsR0FBRyxDQUFDLEdBQUdNLFNBQVM7RUFDcEMsQ0FBQztBQUNILENBQUM7QUFBQztBQUVLLElBQUlMLGlCQUFpQixHQUFHLENBQUMsQ0FBQztBQUFDIn0=

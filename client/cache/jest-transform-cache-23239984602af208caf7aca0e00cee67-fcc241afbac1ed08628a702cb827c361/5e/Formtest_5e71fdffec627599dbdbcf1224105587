@@ -1,0 +1,47 @@
+2d9f0ed985db7637011f441a9eee07b4
+"use strict";
+
+_getJestObj().mock("react-router-dom", function () {
+  return _objectSpread(_objectSpread({}, jest.requireActual("react-router-dom")), {}, {
+    useNavigate: function useNavigate() {
+      return mockedUsedNavigate;
+    }
+  });
+});
+var _testUtils = require("../../test-utils");
+var _react = _interopRequireDefault(require("react"));
+require("@testing-library/jest-dom/extend-expect");
+var _react2 = require("@testing-library/react");
+var _userEvent = _interopRequireDefault(require("@testing-library/user-event"));
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _getJestObj() {
+  var _require2 = require("@jest/globals"),
+    jest = _require2.jest;
+  _getJestObj = function _getJestObj() {
+    return jest;
+  };
+  return jest;
+}
+var _require = require("./Form"),
+  Form = _require["default"];
+var mockedUsedNavigate = jest.fn();
+test("on initial render, login button should be disabled", function () {
+  (0, _testUtils.renderWithProviders)( /*#__PURE__*/_react["default"].createElement(Form, null));
+  expect(_react2.screen.getByRole("button", {
+    type: "submit"
+  })).toBeDisabled();
+});
+test("if form is filled, login button should be enabled", function () {
+  (0, _testUtils.renderWithProviders)( /*#__PURE__*/_react["default"].createElement(Form, null));
+  _userEvent["default"].type(_react2.screen.getByRole("input", {
+    name: "email"
+  }), "someemail@test.com");
+  _userEvent["default"].type(_react2.screen.getByPlaceholderText(/password/i), "1234567890");
+  expect(_react2.screen.getByRole("button", {
+    type: "submit"
+  })).toBeEnabled();
+});
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJtb2NrIiwiamVzdCIsInJlcXVpcmVBY3R1YWwiLCJ1c2VOYXZpZ2F0ZSIsIm1vY2tlZFVzZWROYXZpZ2F0ZSIsInJlcXVpcmUiLCJGb3JtIiwiZm4iLCJ0ZXN0IiwicmVuZGVyV2l0aFByb3ZpZGVycyIsImV4cGVjdCIsInNjcmVlbiIsImdldEJ5Um9sZSIsInR5cGUiLCJ0b0JlRGlzYWJsZWQiLCJ1c2VyRXZlbnQiLCJuYW1lIiwiZ2V0QnlQbGFjZWhvbGRlclRleHQiLCJ0b0JlRW5hYmxlZCJdLCJzb3VyY2VzIjpbIkZvcm0udGVzdC5qcyJdLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgeyByZW5kZXJXaXRoUHJvdmlkZXJzIH0gZnJvbSBcIi4uLy4uL3Rlc3QtdXRpbHNcIjtcclxuaW1wb3J0IFJlYWN0IGZyb20gXCJyZWFjdFwiO1xyXG5pbXBvcnQgXCJAdGVzdGluZy1saWJyYXJ5L2plc3QtZG9tL2V4dGVuZC1leHBlY3RcIjtcclxuaW1wb3J0IHsgc2NyZWVuIH0gZnJvbSBcIkB0ZXN0aW5nLWxpYnJhcnkvcmVhY3RcIjtcclxuaW1wb3J0IHVzZXJFdmVudCBmcm9tIFwiQHRlc3RpbmctbGlicmFyeS91c2VyLWV2ZW50XCI7XHJcbmNvbnN0IHsgZGVmYXVsdDogRm9ybSB9ID0gcmVxdWlyZShcIi4vRm9ybVwiKTtcclxuXHJcbmNvbnN0IG1vY2tlZFVzZWROYXZpZ2F0ZSA9IGplc3QuZm4oKTtcclxuXHJcbmplc3QubW9jayhcInJlYWN0LXJvdXRlci1kb21cIiwgKCkgPT4gKHtcclxuICAuLi5qZXN0LnJlcXVpcmVBY3R1YWwoXCJyZWFjdC1yb3V0ZXItZG9tXCIpLFxyXG4gIHVzZU5hdmlnYXRlOiAoKSA9PiBtb2NrZWRVc2VkTmF2aWdhdGUsXHJcbn0pKTtcclxuXHJcbnRlc3QoXCJvbiBpbml0aWFsIHJlbmRlciwgbG9naW4gYnV0dG9uIHNob3VsZCBiZSBkaXNhYmxlZFwiLCAoKSA9PiB7XHJcbiAgcmVuZGVyV2l0aFByb3ZpZGVycyg8Rm9ybSAvPik7XHJcbiAgZXhwZWN0KHNjcmVlbi5nZXRCeVJvbGUoXCJidXR0b25cIiwgeyB0eXBlOiBcInN1Ym1pdFwiIH0pKS50b0JlRGlzYWJsZWQoKTtcclxufSk7XHJcblxyXG50ZXN0KFwiaWYgZm9ybSBpcyBmaWxsZWQsIGxvZ2luIGJ1dHRvbiBzaG91bGQgYmUgZW5hYmxlZFwiLCAoKSA9PiB7XHJcbiAgcmVuZGVyV2l0aFByb3ZpZGVycyg8Rm9ybSAvPik7XHJcbiAgdXNlckV2ZW50LnR5cGUoXHJcbiAgICBzY3JlZW4uZ2V0QnlSb2xlKFwiaW5wdXRcIiwgeyBuYW1lOiBcImVtYWlsXCIgfSksXHJcbiAgICBcInNvbWVlbWFpbEB0ZXN0LmNvbVwiXHJcbiAgKTtcclxuICB1c2VyRXZlbnQudHlwZShzY3JlZW4uZ2V0QnlQbGFjZWhvbGRlclRleHQoL3Bhc3N3b3JkL2kpLCBcIjEyMzQ1Njc4OTBcIik7XHJcblxyXG4gIGV4cGVjdChzY3JlZW4uZ2V0QnlSb2xlKFwiYnV0dG9uXCIsIHsgdHlwZTogXCJzdWJtaXRcIiB9KSkudG9CZUVuYWJsZWQoKTtcclxufSk7XHJcbiJdLCJtYXBwaW5ncyI6Ijs7QUFTQSxjQUFLQSxJQUFJLENBQUMsa0JBQWtCLEVBQUU7RUFBQSx1Q0FDekJDLElBQUksQ0FBQ0MsYUFBYSxDQUFDLGtCQUFrQixDQUFDO0lBQ3pDQyxXQUFXLEVBQUU7TUFBQSxPQUFNQyxrQkFBa0I7SUFBQTtFQUFBO0FBQUEsQ0FDckMsQ0FBQztBQVpIO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFBb0Q7QUFBQTtBQUFBO0FBQUE7QUFBQTtFQUFBO0lBQUE7RUFBQTtJQUFBO0VBQUE7RUFBQTtBQUFBO0FBQ3BELGVBQTBCQyxPQUFPLENBQUMsUUFBUSxDQUFDO0VBQTFCQyxJQUFJO0FBRXJCLElBQU1GLGtCQUFrQixHQUFHSCxJQUFJLENBQUNNLEVBQUUsRUFBRTtBQU9wQ0MsSUFBSSxDQUFDLG9EQUFvRCxFQUFFLFlBQU07RUFDL0QsSUFBQUMsOEJBQW1CLGdCQUFDLGdDQUFDLElBQUksT0FBRyxDQUFDO0VBQzdCQyxNQUFNLENBQUNDLGNBQU0sQ0FBQ0MsU0FBUyxDQUFDLFFBQVEsRUFBRTtJQUFFQyxJQUFJLEVBQUU7RUFBUyxDQUFDLENBQUMsQ0FBQyxDQUFDQyxZQUFZLEVBQUU7QUFDdkUsQ0FBQyxDQUFDO0FBRUZOLElBQUksQ0FBQyxtREFBbUQsRUFBRSxZQUFNO0VBQzlELElBQUFDLDhCQUFtQixnQkFBQyxnQ0FBQyxJQUFJLE9BQUcsQ0FBQztFQUM3Qk0scUJBQVMsQ0FBQ0YsSUFBSSxDQUNaRixjQUFNLENBQUNDLFNBQVMsQ0FBQyxPQUFPLEVBQUU7SUFBRUksSUFBSSxFQUFFO0VBQVEsQ0FBQyxDQUFDLEVBQzVDLG9CQUFvQixDQUNyQjtFQUNERCxxQkFBUyxDQUFDRixJQUFJLENBQUNGLGNBQU0sQ0FBQ00sb0JBQW9CLENBQUMsV0FBVyxDQUFDLEVBQUUsWUFBWSxDQUFDO0VBRXRFUCxNQUFNLENBQUNDLGNBQU0sQ0FBQ0MsU0FBUyxDQUFDLFFBQVEsRUFBRTtJQUFFQyxJQUFJLEVBQUU7RUFBUyxDQUFDLENBQUMsQ0FBQyxDQUFDSyxXQUFXLEVBQUU7QUFDdEUsQ0FBQyxDQUFDIn0=
